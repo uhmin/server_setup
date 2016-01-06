@@ -48,6 +48,10 @@ COMMIT
 EOF
 
 function main(){
+  if [ ! -e "munge.key"]
+  then
+    echo "Copy /etc/munge/munge.key to the current dir from the torque main node before running this script."
+  fi
   readParams
   yum -y install torque* libtorque-devel.*
   setup_munge
@@ -102,7 +106,7 @@ function setup_munge(){
 
   chown munge:munge /var/log/munge
   chown root        /var/lib/munge
-
+# /etc/munge/munge.key
   cp munge.key   /etc/munge/munge.key
   chown munge -R /etc/munge
   chmod 0700     /etc/munge
