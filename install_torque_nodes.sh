@@ -4,6 +4,8 @@
 # Install epel before running this program.
 # Open ports for pbs_mom, pbs_resmom, and pbs_sched
 
+# IT STILL DOES NOT WORK ON MY SYSTEM!
+
 :<<EOF
 # sample of /etc/sysconfig/iptables
 # Firewall configuration written by system-config-firewall
