@@ -48,9 +48,51 @@ COMMIT
 EOF
 
 function main(){
+  readParams
   yum -y install torque* libtorque-devel.*
   setup_munge
   setup_torque
+}
+
+function readParams(){
+  while [ "HOSTNAME" = "" ]
+  do
+    echo -n "Please input the hostname "
+    read HOSTNAME
+    echo "Hostname = $HOSTNAME"
+    echo -n "Is it OK? [Y/N] "
+    read ans
+    if [ "$ans" != "Y" ] && [ "$ans" != "y" ]
+        then
+        HOSTNAME=""
+    fi
+  done
+
+  while [ "MAX_LOAD" = "" ]
+  do
+    echo -n "Please input the maximum load avarage "
+    read MAX_LOAD
+    echo "max_load = $MAX_LOAD"
+    echo -n "Is it OK? [Y/N] "
+    read ans
+    if [ "$ans" != "Y" ] && [ "$ans" != "y" ]
+        then
+        MAX_LOAD=""
+    fi
+  done
+
+  while [ "AVG_LOAD" = "" ]
+  do
+    echo -n "Please input the ideal load average "
+    read AVG_LOAD
+    echo "ideal load = $AVG_LOAD"
+    echo -n "Is it OK? [Y/N] "
+    read ans
+    if [ "$ans" != "Y" ] && [ "$ans" != "y" ]
+        then
+        AVG_LOAD=""
+    fi
+  done
 }
 
 function setup_munge(){
@@ -84,11 +126,11 @@ function setup_torque(){
   cat << EOF > /etc/torque/mom/config
 # Configuration for pbs_mom.
 \$logevent 0x1fff
-\$max_load 7
-\$ideal_load 6
-\$pbsserver fujiko
-\$restricted fujiko
-\$clienthost fujiko
+\$max_load $MAX_LOAD
+\$ideal_load $AVG_LOAD
+\$pbsserver $HOSTNAME
+\$restricted $HOSTNAME
+\$clienthost $HOSTNAME
 EOF
   cp mom_config /etc/torque/mom/config
   service pbs_mom start
