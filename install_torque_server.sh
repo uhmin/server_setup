@@ -1,7 +1,13 @@
 #!/bin/bash
 
 # This script will install torque on CentOS 6.7 main node
-# 
+# Install epel before installing running this script
+
+function main(){
+    yum -y install torque-*
+    setup_munge
+    setup_torque
+}
 
 function setup_munge(){
     killall munged
