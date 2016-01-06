@@ -122,7 +122,6 @@ function setup_munge(){
 function setup_torque(){
 # setup torque pbs_mom
   echo "Setting up torque"
-  cd $BASEDIR
   cat << EOF > /etc/torque/mom/config
 # Configuration for pbs_mom.
 \$logevent 0x1fff
@@ -132,7 +131,6 @@ function setup_torque(){
 \$restricted $HOSTNAME
 \$clienthost $HOSTNAME
 EOF
-  cp mom_config /etc/torque/mom/config
   service pbs_mom start
   chkconfig pbs_mom on
 }
