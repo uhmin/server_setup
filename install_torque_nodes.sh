@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This script will install torque on CentOS calc nodes.
+# This script will install torque on CentOS 6.7 calc nodes.
 # Install epel before running this program.
 # Open ports for pbs_mom, pbs_resmom, and pbs_sched
 
