@@ -7,7 +7,7 @@
 # You may need to install some other modules.
 
 echo "Installing perl modules"
-sudo yum -y install perl-CPAN expat21-devel perl-DBD-MySQL gd \
+sudo yum -y install perl-CPAN expat21-devel perl-DBD-MySQL gd perl-IO-Compress-Bzip2 \
     perl-XML-Parser perl-libxml-perl perl-libxml-perl perl-GraphViz \
     perl-Archive-Tar perl-Archive-Zip perl-Text-Glob perl-Test-MockModule \
     perl-ExtUtils-CBuilder perl-IO-Compress-Base perl-Module-Build # for bioperl
