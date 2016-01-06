@@ -100,9 +100,8 @@ function setup_munge(){
   mkdir -p    /var/run/munge
   chown munge /var/run/munge
 
-  chown munge /var/log/munge
-  chgrp munge /var/log/munge
-  chown root  /var/lib/munge
+  chown munge:munge /var/log/munge
+  chown root        /var/lib/munge
 
   cp munge.key   /etc/munge/munge.key
   chown munge -R /etc/munge
@@ -113,8 +112,7 @@ function setup_munge(){
   munged --force
 
   service munge stop
-  chown munge /var/log/munge/munged.log
-  chgrp munge /var/log/munge/munged.log
+  chown munge:munge /var/log/munge/munged.log
   service munge start
   chkconfig munge on
 }
