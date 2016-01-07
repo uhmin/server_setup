@@ -52,12 +52,21 @@ EOF
 function main(){
   if [ ! -e "munge.key"]
   then
-    echo "Copy /etc/munge/munge.key to the current dir from the torque main node before running this script."
+    cat <<EOF
+Copy /etc/munge/munge.key to the current dir 
+from the torque main node before running this script.
+EOF
+    exit
   fi
   readParams
   yum -y install torque* libtorque-devel.*
   setup_munge
   setup_torque
+  cat <<EOF
+If this node keeps "offline", please check iptables 
+and then try the following command from the main node:
+sudo pbsnodes -c CALC_NODE # CALC_NODE is the newly added node
+EOF
 }
 
 function readParams(){
@@ -108,7 +117,9 @@ function setup_munge(){
 
   chown munge:munge /var/log/munge
   chown root        /var/lib/munge
-# /etc/munge/munge.key
+
+# You may want to do
+# scp MAIN_NODE:/etc/munge/munge.key .
   cp munge.key   /etc/munge/munge.key
   chown munge -R /etc/munge
   chmod 0700     /etc/munge
