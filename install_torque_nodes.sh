@@ -4,8 +4,6 @@
 # Install epel before running this program.
 # Open ports for pbs_mom, pbs_resmom, and pbs_sched
 
-# IT STILL DOES NOT WORK ON MY SYSTEM!
-
 :<<EOF
 # sample of /etc/sysconfig/iptables
 # Firewall configuration written by system-config-firewall
@@ -63,6 +61,9 @@ EOF
   setup_munge
   setup_torque
   cat <<EOF
+Do not forget to register this server to the main node
+such as /etc/torque/server_priv/nodes
+
 If this node keeps "offline", please check iptables 
 and then try the following command from the main node:
 sudo pbsnodes -c CALC_NODE # CALC_NODE is the newly added node
