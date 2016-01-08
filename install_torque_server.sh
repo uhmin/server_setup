@@ -7,6 +7,11 @@ function main(){
     yum -y install torque-*
     setup_munge
     setup_torque
+    cat <<EOF
+Be sure that all the torque user should be able to 
+access to calc node mutually without password
+(such as by setting publickey without password).
+EOF
 }
 
 function setup_munge(){
