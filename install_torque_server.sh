@@ -5,7 +5,7 @@
 # If torque does not work please check the following
 # 1) Check the firewall. Be sure to open ports for pbs_*, and munge.
 #  Port numbers can be checked in /etc/services
-#  (probably, 3950 (munge), and 1501-1504 (pbs))
+#  (probably, 3950 (munge), and 15001-15004 (pbs))
 
 function main(){
     yum -y install torque-*
