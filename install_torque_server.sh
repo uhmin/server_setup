@@ -19,13 +19,13 @@ function setup_munge(){
     mkdir -p /var/run/munge
     yes | /usr/sbin/create-munge-key
 
-    chown -R munge /etc/munge
+    chown -R munge:munge /etc/munge
     chmod 0700 /etc/munge/
-    chown munge /var/lib/munge/
+    chown munge:munge /var/lib/munge/
     chmod 0711 /var/lib/munge/
-    chown -R munge /var/log/munge/
+    chown -R munge:munge /var/log/munge/
     chmod 0700 /var/log/munge/
-    chown munge /var/run/munge
+    chown munge:munge /var/run/munge
     chmod 0755 /var/run/munge/
 
     service munge start
