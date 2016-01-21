@@ -2,6 +2,10 @@
 
 # This script will install torque on CentOS 6.7 main node
 # Install epel before installing running this script
+# If torque does not work please check the following
+# 1) Check the firewall. Be sure to open ports for pbs_*, and munge.
+#  Port numbers can be checked in /etc/services
+#  (probably, 3950 (munge), and 1501-1504 (pbs))
 
 function main(){
     yum -y install torque-*
