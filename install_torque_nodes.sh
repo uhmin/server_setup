@@ -114,19 +114,17 @@ function readParams(){
 function setup_munge(){
   echo "Setting up munge"
   mkdir -p    /var/run/munge
-  chown munge /var/run/munge
-
+  chown munge:munge /var/run/munge
   chown munge:munge /var/log/munge
   chown root        /var/lib/munge
 
 # You may want to do
 # scp MAIN_NODE:/etc/munge/munge.key .
-  cp munge.key   /etc/munge/munge.key
-  chown munge -R /etc/munge
-  chmod 0700     /etc/munge
-  chgrp munge    /etc/munge/munge.key
-  chmod 400      /etc/munge/munge.key
-
+  cp munge.key         /etc/munge/munge.key
+  chmod 400            /etc/munge/munge.key
+  chown munge:munge -R /etc/munge
+  chmod 0700           /etc/munge
+  
   munged --force
 
   service munge stop
