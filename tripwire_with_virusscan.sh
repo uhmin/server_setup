@@ -1,5 +1,6 @@
 #!/bin/sh
-# To use this script clamAV should be installed
+# clamAV should be installed
+# Put makeModifiedFileList.pl in /etc/tripwire/ before run this script.
 
 HOST_NAME=`uname -n`
 
