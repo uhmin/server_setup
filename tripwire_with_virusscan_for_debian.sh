@@ -14,10 +14,10 @@ SITEPASS=sitepass   # set the  site pass
 # Exec checking
 echo
 echo "Executing tripwire"
-umask 027
-$tripwire --check --quiet --email-report
-#$tripwire --check | tee /var/log/tripwire.log | \
-#    mail -s "Tripwire Check Report in $HOST_NAME" root
+#umask 027
+#$tripwire --check --quiet --email-report
+$tripwire --check | tee /var/log/tripwire.log | \
+    mail -s "Tripwire Check Report in $HOST_NAME" root
 
 cd $logdir
 
